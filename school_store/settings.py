@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,12 +11,15 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    # THIRD-PARTY APPS
+    # DJANGO DEFAULTS
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # USER DEFINED APPS
 ]
 
 MIDDLEWARE = [
@@ -33,7 +37,7 @@ ROOT_URLCONF = 'school_store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -48,10 +52,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'school_store.wsgi.application'
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'school_store',
+        'USER': 'root',
+        'PASSWORD': 'Teacher)32',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -80,6 +89,14 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_URL = '/static/'
+STATIC_FILE_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

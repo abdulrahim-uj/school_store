@@ -35,7 +35,8 @@ def signin(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('/')
+            messages.info(request, "Credentials accepted!")
+            return redirect('authenticator:my_dashboard')
         else:
             messages.info(request, "Invalid credentials!")
             return redirect('authenticator:existing_user')
@@ -45,6 +46,15 @@ def signin(request):
             'is_bootstrap': True,
         }
     return render(request, 'auth/signin.html', context)
+
+
+def dashboard(request):
+    username = request.user.username
+    context = {
+        'title': username + "\'s home",
+        'is_bootstrap': True
+    }
+    return render(request, 'dashboard/user-home.html', context)
 
 
 def signout(request):

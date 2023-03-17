@@ -12,6 +12,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # THIRD-PARTY APPS
+
     # DJANGO DEFAULTS
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,7 +20,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # USER DEFINED APPS
+    'base',
 ]
 
 MIDDLEWARE = [
@@ -45,6 +48,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # USER DEFINED CONTEXTS
+                'base.context_processors.base_context',
             ],
         },
     },

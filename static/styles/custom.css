@@ -1,0 +1,56 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+html {
+    font-size: 80.5%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Merriweather", serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #2b3035;
+    color: #fff;
+}
+
+code {
+    font-family: "Merriweather", serif;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    background-color: #2b3035;
+    color: #fff;
+}
+
+.for-requests {
+    color: white;
+    border-radius: 1em;
+    padding: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+p {
+    margin: auto;
+    padding-inline: inherit;
+}

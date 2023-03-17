@@ -17,12 +17,9 @@
                 {% include 'includes/navbar.html' %}
             </div>
         </div>
-        {# BUTTON CONTAINER FOR SUBMIT REQUESTS #}
-        <div class="d-flex for-requests">
-            <p>for any suggestions or requests</p>
-            <button type="button" class="btn btn-primary">Click here</button>
-        </div>
+        {% block content %}
 
+        {% endblock %}
     </div>
 
 {#<h1>Test</h1>#}
@@ -31,5 +28,10 @@
 
 {# INCLUDE SCRIPTS #}
 {% include 'includes/extras/js.html' %}
+{% if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+{% endif %}
 </body>
 </html>

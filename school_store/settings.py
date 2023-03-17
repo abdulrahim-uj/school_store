@@ -23,6 +23,7 @@ INSTALLED_APPS = [
 
     # USER DEFINED APPS
     'base',
+    'authenticator',
 ]
 
 MIDDLEWARE = [

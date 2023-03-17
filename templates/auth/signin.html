@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="for-register">
+            <div class="container py-5">
+                <h1>Login</h1>
+            </div>
+            <form class="row g-3" method="POST" action="{{ url }}">
+                {% csrf_token %}
+
+                <div class="col-md-6">
+                    <label for="id_user_name" class="form-label">Username</label>
+                    <input
+                            type="text"
+                            name="user_name"
+                            class="form-control"
+                            placeholder="User name"
+                            id="id_user_name"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="id_password" class="form-label">Password</label>
+                    <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Password"
+                            id="id_password"
+                    />
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

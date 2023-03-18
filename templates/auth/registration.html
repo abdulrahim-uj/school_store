@@ -5,7 +5,7 @@
             <div class="container py-5">
                 <h1>Register</h1>
             </div>
-            <form class="row g-3" method="POST" action="{{ url }}">
+            <form class="ajax reset redirect row g-3" method="POST" action="{{ url }}">
                 {% csrf_token %}
                 <div class="col-md-6">
                     <label for="{{ form.username.id_for_label }}" class="form-label">{{ form.username.label }}</label>

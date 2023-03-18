@@ -1,7 +1,6 @@
 from django import forms
-from django.forms import TextInput, DateInput, NumberInput, ChoiceField, EmailInput, Textarea, \
-    CheckboxSelectMultiple, RadioSelect, ModelChoiceField, Select
-
+from django.forms import TextInput, DateInput, NumberInput, EmailInput, Textarea, \
+    CheckboxSelectMultiple, RadioSelect, Select
 from .models import Suggestion, MaterialsChoices, Department, Course
 from django.utils.translation import gettext_lazy as _
 
@@ -17,15 +16,15 @@ class SuggestionForm(forms.ModelForm):
             'name': TextInput(attrs={'class': 'form-control', 'required': 'required'}),
             'dob': DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'age': NumberInput(attrs={'class': 'form-control'}),
-            'gender': RadioSelect(choices=Suggestion.GENDER_CHOICE),
+            'gender': RadioSelect(choices=Suggestion.GENDER_CHOICE, attrs={'class': 'radio inline'}),
             'phone': TextInput(attrs={'class': 'form-control', 'required': 'required'}),
             'email': EmailInput(attrs={'class': 'form-control', 'required': 'required'}),
             'address': Textarea(attrs={'class': 'form-control', 'cols': '10', 'rows': '5', 'required': 'required', },),
             'department': Select(choices=Department.objects.filter(is_deleted=False), attrs={'class': 'form-select'}),
             'course': Select(choices=Course.objects.all(), attrs={'class': 'form-select'}),
             'purpose': Select(choices=Suggestion.PURPOSES_CHOICE, attrs={'class': 'form-select'}),
-            'materials': CheckboxSelectMultiple(choices=MaterialsChoices.objects.all(),
-                                                attrs={'class': 'form-check-input'})
+            'materials': CheckboxSelectMultiple(
+                                                attrs={'class': 'form-check-input me-2 div1'})
         }
         labels = {
             'name': "Name",
@@ -50,14 +49,17 @@ class SuggestionForm(forms.ModelForm):
             #     self.fields[field].widget.attrs['readonly'] = 'readonly'
 
             self.fields['course'].queryset = Course.objects.none()
-            if 'course' in self.data:  # checking if we have state in the posted data
+            if 'course' in self.data:
                 try:
-                    department_pk = self.data.get('department')  # get the state ID
+                    department_pk = self.data.get('department')
                     self.fields['course'].queryset = Course.objects.filter(department__id=department_pk).order_by('course_name')
-                    # the above is setting the queryset for the town field by filtering
-                    # the Town using the posted state_id.
                 except (ValueError, TypeError):
                     pass
+
+            self.fields['materials'] = forms.ModelMultipleChoiceField(
+                widget=forms.CheckboxSelectMultiple,
+                queryset=MaterialsChoices.objects.all(),
+            )
 
             if field == 'age':
                 self.fields[field].widget.attrs['readonly'] = 'readonly'

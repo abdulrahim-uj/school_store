@@ -10,28 +10,19 @@
     {% include 'includes/extras/css.html' %}
 </head>
 <body>
-    <div class="app">
-        {# MAIN NAVBAR #}
-        <div class="main-nav" style="background-color: #6f2cf4">
-            <div class="container" style="background-color: #6f2cf4">
-                {% include 'includes/navbar.html' %}
-            </div>
+<div class="app">
+    {# MAIN NAVBAR #}
+    <div class="main-nav" style="background-color: #6f2cf4">
+        <div class="container" style="background-color: #6f2cf4">
+            {% include 'includes/navbar.html' %}
         </div>
-        {% block content %}
-
-        {% endblock %}
     </div>
+    {% block content %}
 
-{#<h1>Test</h1>#}
-{#<h1>{{ today }}</h1>#}
-{#<h1>{{ domain }}</h1>#}
+    {% endblock %}
+</div>
 
 {# INCLUDE SCRIPTS #}
 {% include 'includes/extras/js.html' %}
-{% if messages %}
-    {% for message in messages %}
-        {{message}}
-    {% endfor %}
-{% endif %}
 </body>
 </html>

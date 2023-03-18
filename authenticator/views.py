@@ -1,11 +1,9 @@
 import json
-
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
 from base.functions import generate_form_errors
 from .forms import UserRegistrationForm
 
@@ -52,8 +50,8 @@ def signin(request):
             auth.login(request, user)
             response_data = {
                 "status": "true",
-                "title": "New User",
-                "message": "New user Successfully Created.",
+                "title": "User",
+                "message": "User successfully login.",
                 "redirect": 'true',
                 "redirect_url": reverse('authenticator:my_dashboard')
             }
@@ -62,7 +60,7 @@ def signin(request):
                 "status": "false",
                 "stable": "true",
                 "title": "Form validation error",
-                "message": "Invalid credentials"
+                "message": "Invalid credentials."
             }
         return HttpResponse(json.dumps(response_data), content_type='application/javascript')
     else:
@@ -90,10 +88,9 @@ def signout(request):
     auth.logout(request)
     response_data = {
         "status": "true",
-        "title": "New User",
-        "message": "New user Successfully Created.",
+        "title": "User",
+        "message": "User successfully logout.",
         "redirect": 'true',
         "redirect_url": reverse('index')
     }
     return redirect('/')
-    # return HttpResponse(json.dumps(response_data), content_type='application/javascript')

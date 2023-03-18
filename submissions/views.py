@@ -1,7 +1,7 @@
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -22,8 +22,9 @@ def user_suggestion(request):
             suggestion.creator = request.user
             suggestion.updater = request.user
             suggestion.save()
+            # If submit & logout at the same time
             # auth.logout(request)
-
+            # keep backup for sweat-alert
             response_data = {
                 "status": "true",
                 "title": "New User",
@@ -32,15 +33,26 @@ def user_suggestion(request):
                 "redirect": 'false',
                 "redirect_url": reverse('authenticator:my_dashboard')
             }
+            # docstring with format & attached link
+            message = """
+            Order confirmed.
+            <br />
+            Click <a href='{url}'>here</a> to return back to home page.
+            """
+            url = reverse('authenticator:my_dashboard')
+            messages.info(request, mark_safe(message.format(url=url)))
+            return redirect('submissions:new_suggestion')
         else:
-            message = generate_form_errors(form, formset=False)
-            response_data = {
-                "status": "false",
-                "stable": "true",
-                "title": "Form validation error",
-                "message": message[0].messages[0]
-            }
-        return HttpResponse(json.dumps(response_data), content_type='application/javascript')
+            messages.info(request, form.errors)
+            return redirect('submissions:new_suggestion')
+        #     message = generate_form_errors(form, formset=False)
+        #     response_data = {
+        #         "status": "false",
+        #         "stable": "true",
+        #         "title": "Form validation error",
+        #         "message": message[0].messages[0]
+        #     }
+        # return HttpResponse(json.dumps(response_data), content_type='application/javascript')
     else:
         form = SuggestionForm()
     context = {

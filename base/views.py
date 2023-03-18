@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from submissions.models import Department
 
 
 def home(request):

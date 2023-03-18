@@ -1,79 +1,159 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <div class="container py-5">
-            <h1>Order</h1>
-        </div>
-        <form class="ajax reset redirect row g-3" method="POST" action="{{ url }}">
-            {% csrf_token %}
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}</label>
-                    {{ form.name }}
-                </div>
-                <div class="col-md-6">
-                    <label for="{{ form.dob.id_for_label }}" class="form-label">{{ form.dob.label }}</label>
-                    {{ form.dob }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="{{ form.age.id_for_label }}" class="form-label">{{ form.age.label }}</label>
-                    {{ form.age }}
-                </div>
-                <div class="col-md-6">
-                    <label for="{{ form.gender.id_for_label }}" class="form-check-label">{{ form.gender.label }}</label>
-                    {{ form.gender }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="{{ form.phone.id_for_label }}" class="form-label">{{ form.phone.label }}</label>
-                    {{ form.phone }}
-                </div>
-                <div class="col-md-6">
-                    <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
-                    {{ form.email }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="{{ form.address.id_for_label }}" class="form-label">{{ form.address.label }}</label>
-                    {{ form.address }}
-                </div>
-                <div class="col-md-6">
-                    <label for="{{ form.department.id_for_label }}"
-                           class="form-label">{{ form.department.label }}</label>
-                    {{ form.department }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="{{ form.course.id_for_label }}" class="form-label">{{ form.course.label }}</label>
-                    {{ form.course }}
-                </div>
-                <div class="col-md-6">
-                    <label for="{{ form.purpose.id_for_label }}" class="form-label">{{ form.purpose.label }}</label>
-                    {{ form.purpose }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-check">
-                        {{ form.materials }}
-                        <label for="{{ form.materials.id_for_label }}"
-                               class="form-check-label">{{ form.materials.label }}</label>
+    <section class="vh-100">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100" style="margin-top: 50px;">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px; margin-bottom: 50px;">
+                        <div class="card-body p-md-5">
+                            <div class="row justify-content-center">
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Order</p>
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                    <form class=" mx-1 mx-md-4" method="POST" action="{{ url }}">
+                                        {% csrf_token %}
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.name.id_for_label }}"
+                                                       class="form-label">{{ form.name.label }}</label>
+                                                {{ form.name }}
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.dob.id_for_label }}"
+                                                       class="form-label">{{ form.dob.label }}</label>
+                                                {{ form.dob }}
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.age.id_for_label }}"
+                                                       class="form-label">{{ form.age.label }}</label>
+                                                {{ form.age }}
+                                            </div>
+                                        </div>
+
+                                        {#                                        <div class="d-flex flex-row align-items-center mb-4">#}
+                                        {#                                            <div class="form-outline flex-fill mb-0">#}
+                                        {#                                                <label for="{{ form.gender.id_for_label }}"#}
+                                        {#                                                       class="form-check-label">{{ form.gender.label }}</label>#}
+                                        {#                                                {{ form.gender }}#}
+                                        {#                                            </div>#}
+                                        {#                                        </div>#}
+                                        <div class="control-group">
+                                            <label for="{{ form.gender.id_for_label }}"
+                                                   class="control-label">{{ form.gender.label }}</label>
+                                            <div class="controls">
+                                                <label class="radio inline">
+                                                    <input id="id_gender_1" type="radio" value="M" name="gender"/>
+                                                    Male
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input id="id_gender_2" type="radio" value="F" name="gender"/>
+                                                    Female
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input id="id_gender_3" type="radio" value="O" name="gender"/>
+                                                    Other
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.phone.id_for_label }}"
+                                                       class="form-label">{{ form.phone.label }}</label>
+                                                {{ form.phone }}
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.email.id_for_label }}"
+                                                       class="form-label">{{ form.email.label }}</label>
+                                                {{ form.email }}
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.address.id_for_label }}"
+                                                       class="form-label">{{ form.address.label }}</label>
+                                                {{ form.address }}
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.department.id_for_label }}"
+                                                       class="form-label">{{ form.department.label }}</label>
+                                                {{ form.department }}
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.course.id_for_label }}"
+                                                       class="form-label">{{ form.course.label }}</label>
+                                                {{ form.course }}
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="{{ form.purpose.id_for_label }}"
+                                                       class="form-label">{{ form.purpose.label }}</label>
+                                                {{ form.purpose }}
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group mb-5">
+                                            <div class="controls">
+                                                <label for="{{ form.materials.id_for_label }}"
+                                                       class="form-check-label">{{ form.materials.label }}</label>
+                                                {{ form.materials }}
+                                            </div>
+                                        </div>
+
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                            <button class="btn btn-primary me-md-2" type="submit">Submit</button>
+                                            <button class="btn btn-primary" type="button"
+                                                    onclick="location.href='{% url 'authenticator:logout_user' %}'">Sign-out</button>
+                                        </div>
+
+{#                                    for messages #}
+                                        {% if messages %}
+                                            {% for message in messages %}
+
+                                                <div class="card" style="margin-top: 50px;">
+                                                    <div class="card-body">
+                                                        {{ message }}
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </form>
+
+                                </div>
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                    <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/draw1.png"
+                                         class="img-fluid" alt="Sample image"/>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Submit & Logout</button>
-                </div>
-            </div>
-        </form>
-    </div>
+        </div>
+    </section>
 
+{#    for dependend dropdown list department --> courses #}
     <script type="text/javascript">
         function getCookie(name) {
             var cookieValue = null;
@@ -94,18 +174,18 @@
         let csrf_token = '{{ csrf_token }}';
 
 
-        let department_field = document.getElementById("id_department");  // get the state_field
+        let department_field = document.getElementById("id_department");
         department_field.addEventListener("change", getDepartmentId);
 
         function getDepartmentId(e) {
-            let department = e.target.value;  // assign the id of the state to state_id
-            console.log(e.target.value);
+            let department = e.target.value;
+            {#console.log(e.target.value);#}
 
-            const data = {'id': department};  // the data we are passing to the backend
-            let url = "{% url 'submissions:getCourse' %}";  // the url we are posting the state id to on the backend
+            const data = {'id': department};
+            let url = "{% url 'submissions:getCourse' %}";
 
             fetch(url, {
-                method: 'POST', // or 'PUT'\
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrf_token
@@ -114,14 +194,14 @@
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log('Success:', data);
-                    let course_field = document.getElementById("id_course");  // get the ID of town field
-                    course_field.innerHTML = '<option value="" selected}>Select Course</option>'  // add to its innerhtml
-                      for (let i=0; i < data.length; i++ ) {
-                          /* loop across the data gotten from the backend */
-                          course_field.innerHTML += `<option value="${data[i]['id']}">${data[i]['course_name']}</option>`
-                          // console.log(${data[i]['name']});
-                      }
+                    {#console.log('Success:', data);#}
+                    let course_field = document.getElementById("id_course");
+                    course_field.innerHTML = '<option value="" selected}>Select Course</option>'
+                    for (let i = 0; i < data.length; i++) {
+                        /* loop across the data gotten from the backend */
+                        course_field.innerHTML += `<option value="${data[i]['id']}">${data[i]['course_name']}</option>`
+                        // console.log(${data[i]['name']});
+                    }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -129,8 +209,10 @@
                 });
         }
 
+        {#when select dob auto calculate age #}
         let date_of_birth = document.getElementById("id_dob");
         date_of_birth.addEventListener("change", ageCalc);
+
         function ageCalc() {
             let date_of_birth = document.getElementById("id_dob").value;
             var today = new Date();
@@ -140,4 +222,5 @@
         }
     </script>
 {% endblock %}
+
 

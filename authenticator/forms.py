@@ -8,20 +8,20 @@ class UserRegistrationForm(UserCreationForm):
     username = forms.CharField(label=_("Username"),
                                max_length=254,
                                widget=forms.TextInput(
-                                   attrs={'placeholder': 'Enter username', 'class': 'required form-control'})
+                                   attrs={'placeholder': 'Enter username', 'class': 'required form-control form-control-lg'})
                                )
     email = forms.EmailField(label=_("Email"),
                              max_length=254,
                              widget=forms.TextInput(
-                                 attrs={'placeholder': 'Enter email', 'class': 'required form-control'})
+                                 attrs={'placeholder': 'Enter email', 'class': 'required form-control form-control-lg'})
                              )
     password1 = forms.CharField(label=_("Password"),
                                 widget=forms.PasswordInput(
-                                    attrs={'placeholder': 'Enter password', 'class': 'required form-control'})
+                                    attrs={'placeholder': 'Enter password', 'class': 'required form-control form-control-lg'})
                                 )
     password2 = forms.CharField(label=_("Confirm Password"),
                                 widget=forms.PasswordInput(
-                                    attrs={'placeholder': 'Enter password again', 'class': 'required form-control'})
+                                    attrs={'placeholder': 'Enter password again', 'class': 'required form-control form-control-lg'})
                                 )
 
     min_username_length = 6

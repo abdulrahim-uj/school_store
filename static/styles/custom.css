@@ -6,7 +6,7 @@
     outline: none;
     border: none;
     text-decoration: none;
-    transition: .2s linear;
+    /*transition: .2s linear;*/
 }
 
 html {
@@ -17,7 +17,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: "Merriweather", serif;
+    font-family: "Poppins", serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #2b3035;
@@ -25,7 +25,7 @@ body {
 }
 
 code {
-    font-family: "Merriweather", serif;
+    font-family: "Poppins", serif;
 }
 
 h1 {
@@ -53,13 +53,37 @@ p {
     margin: auto;
     padding-inline: inherit;
 }
+
 .for-register {
     color: white;
     border-radius: 1em;
     padding: 1em;
-    position: absolute;
+    /*position: absolute;*/
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }
+
+
+/*
+*/
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+

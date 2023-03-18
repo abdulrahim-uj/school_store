@@ -8,12 +8,6 @@ def get_auto_id(model):
 
 
 def generate_form_errors(args, formset=False):
-    """
-
-    :param args:
-    :param formset:
-    :return:
-    """
     message = ''
     if not formset:
         for field in args:
